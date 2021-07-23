@@ -36,13 +36,13 @@ resource "oci_core_route_table" "this" {
 
   display_name = var.name
   
-  route_rules {
+  route_rules = [{
     network_entity_id = oci_core_nat_gateway.this.id
     
     description = "Internet route"
     destination_type = "CIDR_BLOCK"
     destination = "0.0.0.0/0"
-  }
+  }]
 }
 
 resource "oci_core_public_ip" "this" {
@@ -61,4 +61,3 @@ resource "oci_core_nat_gateway" "this" {
   display_name = var.name
   public_ip_id = local.public_addr
 }
-
