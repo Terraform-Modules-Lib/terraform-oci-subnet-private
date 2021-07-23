@@ -30,14 +30,14 @@ resource "oci_core_subnet" "this" {
   dns_label = var.name
 }
 
-resource "oci_core_route_table" "test_route_table" {
+resource "oci_core_route_table" "this" {
   compartment_id = local.vcn.compartment_id
   vcn_id = local.vcn.id
 
   display_name = var.name
   
   route_rules {
-    network_entity_id = oci_core_internet_gateway.this.id
+    network_entity_id = oci_core_nat_gateway.this.id
     
     description = "Internet route"
     destination_type = "CIDR_BLOCK"
