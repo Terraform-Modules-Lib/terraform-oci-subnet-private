@@ -17,7 +17,6 @@ locals {
   vcn_id = var.vcn_id
   public_addr_id = var.public_addr_id
   
-  vcn = data.oci_core_vcn.vcn
   subnet = module.subnet.subnet
   #public_addr = length(var.public_addr_id) > 0 ? var.public_addr_id : oci_core_public_ip.this[0].id
 }
