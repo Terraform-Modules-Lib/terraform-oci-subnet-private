@@ -20,6 +20,7 @@ locals {
   subnet = module.subnet.subnet
   public_addr = try(data.oci_core_public_ip.public_addr[0], oci_core_public_ip.public_addr[0])
   internet_gw = oci_core_nat_gateway.nat_gw
+  oci_gw = oci_core_service_gateway.oci_gw
   routing_table = oci_core_route_table.routing_table
 }
 
