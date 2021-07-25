@@ -19,6 +19,7 @@ locals {
   
   subnet = module.subnet.subnet
   public_addr = try(data.oci_core_public_ip.public_addr[0], oci_core_public_ip.public_addr[0])
+  routing_table = oci_core_route_table.routing_table
 }
 
 module "subnet" {
@@ -28,4 +29,9 @@ module "subnet" {
   cidr = local.cidr
   vcn_id = local.vcn_id
   public = false
+}
+
+resource "oci_core_route_table_attachment" "routing" {
+  subnet_id = local.subnet.id
+  route_table_id = local.routing_table.id
 }
