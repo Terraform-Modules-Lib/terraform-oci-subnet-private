@@ -18,7 +18,7 @@ locals {
   public_addr_id = var.public_addr_id
   
   subnet = module.subnet.subnet
-  #public_addr = length(var.public_addr_id) > 0 ? var.public_addr_id : oci_core_public_ip.this[0].id
+  public_addr = try(data.oci_core_public_ip.public_addr[0], oci_core_public_ip.public_addr[0])
 }
 
 module "subnet" {
