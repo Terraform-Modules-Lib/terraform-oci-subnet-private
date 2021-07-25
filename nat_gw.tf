@@ -2,7 +2,7 @@ data "oci_core_public_ip" "public_addr" {
   # Create if a public_addr_id is provided
   count = length(local.public_addr_id) > 0 ? 1 : 0
   
-  id = local.publi_addr_id
+  id = local.public_addr_id
 }
 
 resource "oci_core_public_ip" "public_addr" {
