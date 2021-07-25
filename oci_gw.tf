@@ -1,5 +1,9 @@
 data "oci_core_services" "oci_services" {
-  
+  filter {
+    name = "name"
+    value = "^All .* Services In Oracle Services Network"
+    regex = true
+  }
 }
 
 resource "oci_core_service_gateway" "oci_gw" {
