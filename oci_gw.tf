@@ -9,7 +9,7 @@ resource "oci_core_service_gateway" "oci_gw" {
   display_name = local.name
 
   dynamic "services" {
-    for_each = { for service in data.oci_core_services.oci_services: 
+    for_each = { for service in data.oci_core_services.oci_services.services: 
       service.id => service
     }
 
