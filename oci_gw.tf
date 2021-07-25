@@ -13,7 +13,7 @@ resource "oci_core_service_gateway" "oci_gw" {
       service.id => service
     }
 
-    contenct {
+    content {
       service_id = services.value.id
     }
   }
