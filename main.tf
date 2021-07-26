@@ -15,11 +15,13 @@ locals {
   cidr = var.cidr
   
   vcn_id = var.vcn_id
-  public_addr_id = var.public_addr_id
+  nat_gw_id = var.nat_gateway_id
+  oci_gw_id = var.oci_gateway_id
   
   subnet = module.subnet.subnet
-  public_addr = try(data.oci_core_public_ip.public_addr[0], oci_core_public_ip.public_addr[0])
-  internet_gw = oci_core_nat_gateway.nat_gw
+  gw = {
+    nat = data.oci_core_nat_gateway.nat_gw
+  }
   oci_gw = oci_core_service_gateway.oci_gw
   routing_table = oci_core_route_table.routing_table
 }
