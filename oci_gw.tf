@@ -1,3 +1,14 @@
+data "oci_core_service_gateway" "oci_gw" {
+  compartment_id = local.subnet.compartment_id
+  vcn_id = local.subnet.vcn_id
+  
+  filter {
+    name = "id"
+    values = [loca.oci_gw_id]
+  }
+}
+
+/*
 data "oci_core_services" "oci_services" {
   filter {
     name = "name"
@@ -22,3 +33,4 @@ resource "oci_core_service_gateway" "oci_gw" {
     }
   }
 }
+*/
