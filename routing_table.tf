@@ -13,7 +13,9 @@ resource "oci_core_route_table" "routing_table" {
   }
   
   dynamic "route_rules" {
-    for_each = data.oci_core_services.oci_services[*].services
+    for_each = { for service in data.oci_core_services.oci_services:
+      service.services[0].id => service.services[0]
+    }
     
     content {
       network_entity_id = local.gw.oci.id
