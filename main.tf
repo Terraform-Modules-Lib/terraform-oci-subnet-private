@@ -19,10 +19,12 @@ locals {
   oci_gw_id = var.oci_gateway_id
   
   subnet = module.subnet.subnet
+
   gw = {
     nat = data.oci_core_nat_gateway.nat_gw
+    oci = data.oci_core_service_gateway.oci_gw.service_gateways[0]
   }
-  oci_gw = oci_core_service_gateway.oci_gw
+
   routing_table = oci_core_route_table.routing_table
 }
 
