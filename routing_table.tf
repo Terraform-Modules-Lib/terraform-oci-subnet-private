@@ -13,8 +13,8 @@ resource "oci_core_route_table" "routing_table" {
   }
   
   dynamic "route_rules" {
-    for_each = { for service in data.oci_core_services.oci_services:
-      service.services[0].id => service.services[0]
+    for_each = { for service in data.oci_core_services.oci_services.services:
+      service.id => service
     }
     
     content {
