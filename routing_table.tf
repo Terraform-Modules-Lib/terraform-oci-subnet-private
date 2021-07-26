@@ -13,10 +13,10 @@ resource "oci_core_route_table" "routing_table" {
   }
   
   dynamic "route_rules" {
-    for_each = data.oci_core_services.oci_services.services
+    for_each = data.oci_core_services.oci_services[*].services
     
     content {
-      network_entity_id = local.oci_gw.id
+      network_entity_id = local.gw.oci.id
       
       description = format("%s route for %s subnet", route_rules.value.name, local.name)
       destination_type = "SERVICE_CIDR_BLOCK"
