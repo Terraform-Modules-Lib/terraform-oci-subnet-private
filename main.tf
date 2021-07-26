@@ -15,8 +15,8 @@ locals {
   cidr = var.cidr
   
   vcn_id = var.vcn_id
-  nat_gw_id = var.nat_gateway_id
-  oci_gw_id = var.oci_gateway_id
+  nat_gw_id = var.nat_gw_id
+  oci_gw_id = var.oci_gw_id
   
   subnet = module.subnet.subnet
 
