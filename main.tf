@@ -13,6 +13,7 @@ terraform {
 locals {
   name = var.name
   cidr = var.cidr
+  acl = var.acl
   
   vcn_id = var.vcn_id
   nat_gw_id = var.nat_gw_id
@@ -35,6 +36,7 @@ module "subnet" {
   cidr = local.cidr
   vcn_id = local.vcn_id
   public = false
+  acl = local.acl
 }
 
 resource "oci_core_route_table_attachment" "routing" {
