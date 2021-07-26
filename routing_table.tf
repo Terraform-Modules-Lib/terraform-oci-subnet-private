@@ -5,7 +5,7 @@ resource "oci_core_route_table" "routing_table" {
   display_name = local.name
 
   route_rules {
-    network_entity_id = local.internet_gw.id
+    network_entity_id = local.gw.nat.id
 
     description = format("Internet route for %s subnet", local.name)
     destination_type = "CIDR_BLOCK"
