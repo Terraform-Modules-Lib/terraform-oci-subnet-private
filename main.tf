@@ -22,7 +22,7 @@ locals {
 
   gw = {
     nat = data.oci_core_nat_gateway.nat_gw
-    oci = data.oci_core_service_gateway.oci_gw.service_gateways[0]
+    oci = data.oci_core_service_gateways.oci_gw.service_gateways[0]
   }
 
   routing_table = oci_core_route_table.routing_table
