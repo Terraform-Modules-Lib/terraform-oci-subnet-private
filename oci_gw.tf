@@ -9,16 +9,12 @@ data "oci_core_service_gateways" "oci_gw" {
 }
 
 data "oci_core_services" "oci_services" {
-  for_each = { for service in local.gw.oci.services:
-    service.service_id => service
-  }
-
   filter {
     name = "id"
-    values = [each.key]
+    values = [ for service in local.gw.oci.services: service.service_id ]
   }
 }
-
+  
 /*
 resource "oci_core_service_gateway" "oci_gw" {
   compartment_id = local.subnet.compartment_id
