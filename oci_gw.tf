@@ -10,7 +10,7 @@ data "oci_core_service_gateways" "oci_gw" {
 
 data "oci_core_services" "oci_services" {
   for_each = { for service in local.gw.oci.services:
-    service.id => service
+    service.service_id => service
   }
 
   filter {
