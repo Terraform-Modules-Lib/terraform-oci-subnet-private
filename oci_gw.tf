@@ -1,4 +1,4 @@
-data "oci_core_service_gateway" "oci_gw" {
+data "oci_core_service_gateways" "oci_gw" {
   compartment_id = local.subnet.compartment_id
   vcn_id = local.subnet.vcn_id
   
