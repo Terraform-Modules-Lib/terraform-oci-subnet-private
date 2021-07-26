@@ -4,3 +4,5 @@ variable "name" {}
 
 variable "nat_gw_id" {}
 variable "oci_gw_id" {}
+
+variable "acl" {}
