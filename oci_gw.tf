@@ -4,19 +4,22 @@ data "oci_core_service_gateway" "oci_gw" {
   
   filter {
     name = "id"
-    values = [loca.oci_gw_id]
+    values = [local.oci_gw_id]
+  }
+}
+
+data "oci_core_services" "oci_services" {
+  for_each = { for service in local.gw.oci.services:
+    service.id => service
+  }
+
+  filter {
+    name = "id"
+    values = [each.key]
   }
 }
 
 /*
-data "oci_core_services" "oci_services" {
-  filter {
-    name = "name"
-    values = ["^All .* Services In Oracle Services Network"]
-    regex = true
-  }
-}
-
 resource "oci_core_service_gateway" "oci_gw" {
   compartment_id = local.subnet.compartment_id
   vcn_id = local.subnet.vcn_id
